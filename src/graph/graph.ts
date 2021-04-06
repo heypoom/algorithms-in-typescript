@@ -1,6 +1,6 @@
 import {bfs} from './bfs'
 
-import {collect} from '~/utils'
+import {collect, dedupe} from '~/utils'
 
 export class Graph<V = unknown, K extends string = string> {
   nodes: Map<K, V> = new Map()
@@ -70,8 +70,9 @@ export class Graph<V = unknown, K extends string = string> {
     onProcess: (source: K, onVisit: (edge: K) => void) => void
   ): K[] {
     const process = onProcess.bind(this)
+    const edges = collect<K>((onVisit) => process(source, onVisit))
 
-    return collect((onVisit) => process(source, onVisit))
+    return dedupe<K>(edges)
   }
 }
 

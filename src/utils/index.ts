@@ -1,4 +1,4 @@
-export const dedupe = <K extends string>(list: K[]) => Array.from(new Set(list))
+export const dedupe = <K>(list: K[]) => Array.from(new Set(list))
 export const sum = (list: number[]) => list.reduce((a, b) => a + b)
 
 export function collect<K>(process: (visit: (value: K) => void) => void): K[] {
