@@ -6,8 +6,9 @@ export function bfs<V = unknown, K extends string = string>(
   onVisit: (edge: K) => void
 ) {
   const visited: Partial<Record<K, boolean>> = {}
-
   let stack = [...graph.edgeOf(source)]
+
+  onVisit?.(source)
 
   while (stack.length > 0) {
     const edge = stack.shift()

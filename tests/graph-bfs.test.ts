@@ -14,30 +14,30 @@ describe('Linear Graph Breadth-First Search', () => {
     const graph = createLinearGraph()
 
     const edgesA = graph.collect('A', graph.bfs) //?
-    expect(edgesA.join('')).toBe('BCDEFG')
+    expect(edgesA.join('')).toBe('ABCDEFG')
 
     const edgesB = graph.collect('D', graph.bfs) //?
-    expect(edgesB.join('')).toBe('EFG')
+    expect(edgesB.join('')).toBe('DEFG')
   })
 
   it('can search linear graph with utility functions', () => {
     const graph = createLinearGraph()
 
     const edgesA = collect((onVisit) => bfs('A', graph, onVisit)) //?
-    expect(edgesA.join('')).toBe('BCDEFG')
+    expect(edgesA.join('')).toBe('ABCDEFG')
 
     const edgesB = collect((onVisit) => bfs('D', graph, onVisit)) //?
-    expect(edgesB.join('')).toBe('EFG')
+    expect(edgesB.join('')).toBe('DEFG')
   })
 })
 
 describe('Complex Graph Breadth-First Search', () => {
   it('should be able to search cyclic graphs', () => {
     const graph = createGraph({A: 1, B: 2, C: 3})
-    graph.chain('A', 'B', 'C')
-    graph.chain('C', 'B', 'A')
+    graph.chain('A', 'C')
+    graph.chain('C', 'B', 'C', 'A')
 
     const edges = graph.collect('A', graph.bfs) //?
-    expect(edges.join('')).toBe('BCA')
+    expect(edges.join('')).toBe('ACB')
   })
 })
