@@ -18,7 +18,7 @@ export class Graph<V = unknown, K extends string = string> {
   }
 
   /** Set the values for multiple nodes. */
-  setValues(nodes: Record<K, V>) {
+  setValues(nodes: Partial<Record<K, V>>) {
     Object.entries(nodes).forEach(([key, value]) => {
       this.add(key as K, value as V)
     })
