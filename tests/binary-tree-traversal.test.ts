@@ -1,4 +1,4 @@
-import {N, collect, bfs, dfss, dfs, Order, traverse, Algo} from '@binary-tree'
+import {N, collect, bfs, dfss, dfs, Order, traverse, Algo} from '~/binary-tree'
 
 //    A
 //  B   C

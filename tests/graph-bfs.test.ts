@@ -1,4 +1,4 @@
-import {createGraph, collect, bfs} from '@graph'
+import {createGraph, collect, bfs} from '~/graph'
 
 describe('Graph Breadth First Search', () => {
   it('should work', () => {

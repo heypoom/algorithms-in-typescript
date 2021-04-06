@@ -1,21 +1,19 @@
 {
   "compilerOptions": {
-    "module": "ES2020",
+    "module": "CommonJS",
     "target": "es2016",
     "jsx": "preserve",
     "strictFunctionTypes": true,
     "sourceMap": true,
     "lib": ["ES2020", "DOM"],
-    "baseUrl": ".",
     "strict": true,
     "strictNullChecks": true,
     "types": ["jest", "node"],
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
+    "baseUrl": ".",
     "paths": {
-      "@": ["src/*"],
-      "@graph": ["src/graph/*"],
-      "@binary-tree": ["src/binary-tree/*"]
+      "~/*": ["src/*"],
+      "@/*": ["src/*"],
+      "@*": ["src/*"]
     }
   },
   "exclude": ["node_modules", "**/node_modules/*"]

@@ -1,13 +1,15 @@
-module.exports = function (w) {
+module.exports = () => {
   return {
-    files: ['src/*.ts', 'src/**/*.ts'],
+    autoDetect: true,
 
-    tests: [
-      'tests/*.ts',
-      'tests/**/*.ts',
-      'tests/**/__tests__/*.ts',
-      'src/**/*.test.ts',
-    ],
+    env: {
+      params: {
+        runner: '--experimental-vm-modules',
+      },
+    },
+
+    files: ['src/**/*.ts', 'tests/**/.ts'],
+    tests: ['tests/**/*.ts', 'src/**/__tests__/*.ts', 'src/**/*.test.ts'],
 
     env: {
       type: 'node',
