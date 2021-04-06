@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "ES2020",
+    "target": "es2016",
+    "jsx": "preserve",
+    "strictFunctionTypes": true,
+    "sourceMap": true,
+    "lib": ["ES2020", "DOM"],
+    "baseUrl": ".",
+    "strict": true,
+    "strictNullChecks": true,
+    "types": ["jest", "node"],
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "paths": {
+      "@": ["src/*"],
+      "@graph": ["src/graph/*"],
+      "@binary-tree": ["src/binary-tree/*"]
+    }
+  },
+  "exclude": ["node_modules", "**/node_modules/*"]
+}
