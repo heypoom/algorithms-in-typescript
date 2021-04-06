@@ -10,8 +10,9 @@ export function bfs<V = unknown, K extends string = string>(
   let stack = [...graph.edgeOf(source)]
 
   while (stack.length > 0) {
-    // Save the node names.
     const edge = stack.shift()
+    if (!edge) continue
+
     onVisit?.(edge)
 
     // Prevents infinite loop caused by Graph cycles
