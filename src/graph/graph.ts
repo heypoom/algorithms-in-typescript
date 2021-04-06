@@ -1,5 +1,6 @@
 import {bfs} from './bfs'
-import {collect} from './utils'
+
+import {collect} from '~/utils'
 
 export class Graph<V = unknown, K extends string = string> {
   nodes: Map<K, V> = new Map()
@@ -44,8 +45,8 @@ export class Graph<V = unknown, K extends string = string> {
     })
   }
 
-  valueOf(key: K): V {
-    return this.nodes.get(key)
+  valueOf(key: K): V | null {
+    return this.nodes.get(key) ?? null
   }
 
   edgeOf(key: K): K[] {
@@ -56,8 +57,8 @@ export class Graph<V = unknown, K extends string = string> {
     bfs(source, this, onVisit)
   }
 
-  values(keys: K[]): V[] {
-    return keys.map((k) => this.valueOf(k) ?? null)
+  values(keys: K[]): (V | null)[] {
+    return keys.map((k) => this.valueOf(k ?? null))
   }
 
   log(edges: K[]): string {
