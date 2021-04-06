@@ -1,7 +1,7 @@
 export interface INode<T> {
   value: T
-  left?: INode<T>
-  right?: INode<T>
+  left?: INode<T> | null
+  right?: INode<T> | null
 }
 
 export enum Algo {

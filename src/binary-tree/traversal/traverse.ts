@@ -1,5 +1,3 @@
-import {N} from './node'
-
 import {bfs} from './fn/bfs'
 import {dfs} from './fn/dfs'
 import {dfss} from './fn/dfss'

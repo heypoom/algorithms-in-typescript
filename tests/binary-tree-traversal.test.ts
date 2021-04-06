@@ -9,7 +9,7 @@ const createTree = () => N('A', N('B', N('D'), N('E')), N('C', N('F'), N('G')))
 
 describe('Binary Tree Breadth-First Search', () => {
   it('should perform breadth-first search', () => {
-    const nodes = collect(createTree(), bfs)
+    const nodes = collect(createTree(), bfs) //?
 
     expect(nodes.join('')).toBe('ABCDEFG')
   })
@@ -17,7 +17,7 @@ describe('Binary Tree Breadth-First Search', () => {
 
 describe('Binary Tree Depth-First Search', () => {
   it('should perform pre-order depth-first search', () => {
-    const nodes = collect(createTree(), dfs, Order.Pre)
+    const nodes = collect(createTree(), dfs, Order.Pre) //?.
 
     expect(nodes.join('')).toBe('ABDECFG')
   })

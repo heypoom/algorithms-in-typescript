@@ -10,10 +10,10 @@ export function dfs<T>(
     if (!node) return
 
     if (order === Order.Pre) onEnter(node.value)
-    w(node.left)
+    if (node.left) w(node.left)
 
     if (order === Order.In) onEnter(node.value)
-    w(node.right)
+    if (node.right) w(node.right)
 
     if (order === Order.Post) onEnter(node.value)
   }
