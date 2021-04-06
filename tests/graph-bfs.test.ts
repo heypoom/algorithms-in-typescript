@@ -1,4 +1,5 @@
 import {bfs, createGraph} from '~/graph'
+import {collectEdges} from '~/graph/collect-edges'
 
 import {collect} from '~/utils'
 
@@ -26,7 +27,7 @@ describe('Linear Graph Breadth-First Search', () => {
     const edgesA = collect((onVisit) => bfs('A', graph, onVisit)) //?
     expect(edgesA.join('')).toBe('ABCDEFG')
 
-    const edgesB = collect((onVisit) => bfs('D', graph, onVisit)) //?
+    const edgesB = collectEdges('D', graph, bfs) //?
     expect(edgesB.join('')).toBe('DEFG')
   })
 })
@@ -37,7 +38,7 @@ describe('Complex Graph Breadth-First Search', () => {
     graph.chain('A', 'C')
     graph.chain('C', 'A', 'B')
 
-    const edges = graph.collect('A', graph.bfs) //?
+    const edges = graph.collect('A', graph.bfs)
     expect(edges.join('')).toBe('ACB')
   })
 })
