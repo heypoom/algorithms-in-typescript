@@ -1,4 +1,4 @@
-import {createGraph, bfs, collectEdges} from '~/graph'
+import {createGraph, bfs, collectEdges, dot} from '~/graph'
 
 import {collect} from '~/utils'
 
@@ -44,9 +44,7 @@ describe('Cyclic Graph Breadth-First Search', () => {
 
 describe('Complex Graph Breadth-First Search', () => {
   it('should be able to search complex graphs', () => {
-    const graph = createGraph({A: 1, B: 2, C: 3, D: 4, E: 5, F: 6})
-
-    graph.dot`
+    const graph = dot`
       A -> B, C, D, E
       C -> D, B, A
       E -> A, C, E
