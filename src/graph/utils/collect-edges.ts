@@ -1,5 +1,5 @@
-import {Graph} from './graph'
-import {ITraverseFn} from './types'
+import {Graph} from '../graph'
+import {ITraverseFn} from '../types'
 
 import {collect, dedupe} from '~/utils'
 

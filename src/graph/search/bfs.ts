@@ -1,4 +1,4 @@
-import {Graph} from './graph'
+import {Graph} from '../graph'
 
 export function bfs<V = unknown, K extends string = string>(
   source: K,

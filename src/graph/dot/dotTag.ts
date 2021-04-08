@@ -1,4 +1,4 @@
-import {createGraph, Graph} from './graph'
+import {createGraph, Graph} from '../graph'
 
 export function dot<T = unknown, K extends string = string>(
   strings: TemplateStringsArray,

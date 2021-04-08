@@ -1,5 +1,5 @@
 import {bfs, createGraph} from '~/graph'
-import {collectEdges} from '~/graph/collect-edges'
+import {collectEdges} from '~/graph/utils/collect-edges'
 
 import {collect} from '~/utils'
 

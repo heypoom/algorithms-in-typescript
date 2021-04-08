@@ -1,7 +1,7 @@
-import {bfs} from './bfs'
+import {bfs} from './search/bfs'
 
 import {collect, dedupe, parseTaggedTemplate, zip} from '~/utils'
-import {parseDot} from './parseDot'
+import {parseDot} from './dot/parseDot'
 
 export class Graph<V = unknown, K extends string = string> {
   nodes: Map<K, V> = new Map()

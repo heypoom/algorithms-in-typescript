@@ -1,6 +1,9 @@
+/** Graph Class and Utilities */
 export {createGraph, Graph} from './graph'
 
-export {bfs} from './bfs'
+/** Graph Search and Traversal Helpers */
+export {bfs} from './search/bfs'
 
-export {dot} from './dotTag'
-export {parseDot} from './parseDot'
+/** Dot Markup Parsing Utilities */
+export {dot} from './dot/dotTag'
+export {parseDot} from './dot/parseDot'
