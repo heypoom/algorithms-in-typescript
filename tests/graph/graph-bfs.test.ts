@@ -1,5 +1,4 @@
-import {bfs, createGraph} from '~/graph'
-import {collectEdges} from '~/graph/utils/collect-edges'
+import {createGraph, bfs, collectEdges} from '~/graph'
 
 import {collect} from '~/utils'
 
