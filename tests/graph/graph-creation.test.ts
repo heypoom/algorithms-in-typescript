@@ -14,21 +14,29 @@ describe('Graph Creation with dot utility', () => {
   })
 
   it('can create linear chained graph', () => {
-    const graph = dot`A -> B -> C -> D`
+    const g = dot`A -> B -> C -> D`
 
-    expect(graph.edgeOf('A')).toStrictEqual(['B'])
-    expect(graph.edgeOf('B')).toStrictEqual(['C'])
-    expect(graph.edgeOf('C')).toStrictEqual(['D'])
-    expect(graph.edgeOf('D')).toStrictEqual([])
+    expect(g.edgeOf('A')).toStrictEqual(['B'])
+    expect(g.edgeOf('B')).toStrictEqual(['C'])
+    expect(g.edgeOf('C')).toStrictEqual(['D'])
+    expect(g.edgeOf('D')).toStrictEqual([])
   })
 
   it('can create diamond graph', () => {
     // A -> B | A -> C | B -> D | C -> D
-    const graph = dot`A -> B, C -> D`
+    const g = dot`A -> B, C -> D`
 
-    expect(graph.edgeOf('A')).toStrictEqual(['B', 'C'])
-    expect(graph.edgeOf('B')).toStrictEqual(['D'])
-    expect(graph.edgeOf('C')).toStrictEqual(['D'])
-    expect(graph.edgeOf('D')).toStrictEqual([])
+    expect(g.edgeOf('A')).toStrictEqual(['B', 'C'])
+    expect(g.edgeOf('B')).toStrictEqual(['D'])
+    expect(g.edgeOf('C')).toStrictEqual(['D'])
+    expect(g.edgeOf('D')).toStrictEqual([])
+  })
+
+  it('can create cyclic graph', () => {
+    const g = dot`A -> B, C -> A`
+
+    expect(g.edgeOf('A')).toStrictEqual(['B', 'C'])
+    expect(g.edgeOf('B')).toStrictEqual(['A'])
+    expect(g.edgeOf('C')).toStrictEqual(['A'])
   })
 })
