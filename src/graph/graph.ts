@@ -1,7 +1,7 @@
 import {bfs} from './search/bfs'
 
 import {collect, dedupe, parseTaggedTemplate, zip} from '~/utils'
-import {parseDot} from './dot/parseDot'
+import {asDot, parseDot} from './dot/parseDot'
 
 export class Graph<V = unknown, K extends string = string> {
   nodes: Map<K, V> = new Map()
@@ -89,6 +89,10 @@ export class Graph<V = unknown, K extends string = string> {
     const markup = parseTaggedTemplate(strings, args)
 
     return this.parse(markup)
+  }
+
+  asDot(): string {
+    return asDot(this)
   }
 
   values(keys: K[]): (V | null)[] {

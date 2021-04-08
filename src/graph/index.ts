@@ -6,7 +6,7 @@ export {bfs} from './search/bfs'
 
 /** Dot Markup Parsing Utilities */
 export {dot} from './dot/dotTag'
-export {parseDot} from './dot/parseDot'
+export {parseDot, asDot} from './dot/parseDot'
 
 /** Graph Utility Functions */
 export {collectEdges} from './utils/collect-edges'

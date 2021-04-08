@@ -1,4 +1,5 @@
 import {createGraph, dot} from '~/graph'
+import {trimmed} from '~/utils'
 
 describe('Graph Dot Parser', () => {
   it('can parse linear A -> B graph in dot markup', () => {
@@ -54,5 +55,17 @@ describe('Graph Dot Parser', () => {
     expect(graph.edgeOf('C').join('')).toBe('DBA')
     expect(graph.edgeOf('E').join('')).toBe('ACE')
     expect(graph.edgeOf('F').join('')).toBe('AB')
+  })
+
+  it('can serialize graph as dot document', () => {
+    const g = dot`A -> B, C -> A`
+
+    const result = trimmed`
+      A -> B, C
+      B -> A
+      C -> A
+    `
+
+    expect(g.asDot()).toBe(result)
   })
 })

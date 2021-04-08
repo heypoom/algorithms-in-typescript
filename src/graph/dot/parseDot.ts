@@ -22,3 +22,10 @@ export function parseDot<V = unknown, K extends string = string>(
 
   return graph
 }
+
+export const asDot = <V = unknown, K extends string = string>(
+  graph: Graph<V, K>
+): string =>
+  Array.from(graph.edges)
+    .map(([key, value]) => `${key} -> ${value.join(', ')}`)
+    .join('\n')
