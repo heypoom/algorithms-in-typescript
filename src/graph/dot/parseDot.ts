@@ -9,10 +9,15 @@ export function parseDot<V = unknown, K extends string = string>(
   const statements = trims(markup.split('\n'))
 
   for (let statement of statements) {
-    const [source, targetText] = trims(statement.split('->')) //?
-    const targets = trims(targetText.split(',')) //?
+    const edges = trims(statement.split('->')) //?
 
-    graph.link(source as K, targets as K[])
+    const targets = edges.map((edge) => {
+      if (!edge.includes(',')) return edge as K
+
+      return trims(edge.split(',')) as K[]
+    })
+
+    graph.chain(...targets)
   }
 
   return graph

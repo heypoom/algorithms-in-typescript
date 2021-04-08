@@ -32,7 +32,10 @@ export class Graph<V = unknown, K extends string = string> {
   }
 
   /** Link one or more edges to a source node. */
-  link(source: K, target: K | K[]) {
+  link(source: K | K[], target: K | K[]) {
+    // If there is multiple sources, link them one-by-one.
+    if (Array.isArray(source)) return this.linkSources(source, target)
+
     // If there is multiple target, link them one-by-one.
     if (Array.isArray(target)) return this.links(source, target)
 
@@ -48,12 +51,17 @@ export class Graph<V = unknown, K extends string = string> {
   }
 
   /** Link multiple edges to one source node. */
-  links(source: K, target: K[]) {
-    target.forEach((edge) => this.link(source, edge))
+  links(source: K, edges: K[]) {
+    edges.forEach((edge) => this.link(source, edge))
+  }
+
+  /** Link multiple edges to one source node. */
+  linkSources(sources: K[], target: K | K[]) {
+    sources.forEach((source) => this.link(source, target))
   }
 
   /** Chain-link the nodes together, like A -> B -> C -> D */
-  chain(...edges: K[]) {
+  chain(...edges: (K | K[])[]) {
     edges.reduce((source, target) => {
       this.link(source, target)
 
