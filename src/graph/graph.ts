@@ -55,7 +55,7 @@ export class Graph<V = unknown, K extends string = string> {
     edges.forEach((edge) => this.link(source, edge))
   }
 
-  /** Link multiple edges to one source node. */
+  /** Link multiple sources to one or more target nodes. */
   linkSources(sources: K[], target: K | K[]) {
     sources.forEach((source) => this.link(source, target))
   }
