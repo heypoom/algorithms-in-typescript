@@ -13,8 +13,8 @@ describe('Graph Values', () => {
   it('can update graph values using add and setValues', () => {
     const g = createGraph({A: 0, B: 0, C: 0, D: 0})
 
-    g.add('A', 1)
-    g.add('B', 2)
+    g.set('A', 1)
+    g.set('B', 2)
 
     g.setValues({C: 3, D: 4})
 

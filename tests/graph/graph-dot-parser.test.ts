@@ -55,10 +55,4 @@ describe('Graph Dot Parser', () => {
     expect(graph.edgeOf('E').join('')).toBe('ACE')
     expect(graph.edgeOf('F').join('')).toBe('AB')
   })
-
-  it('can link to itself', () => {
-    const g = dot`A -> A`
-
-    expect(g.edgeOf('A')).toStrictEqual(['A'])
-  })
 })

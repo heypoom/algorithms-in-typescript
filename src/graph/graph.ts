@@ -11,10 +11,12 @@ export class Graph<V = unknown, K extends string = string> {
     if (values) this.setValues(values)
   }
 
-  /** Add a node to the graph. */
-  add(key: K, value: V) {
+  /** Set the node's value. */
+  set(key: K, value: V) {
+    // Set the node's value.
     this.nodes.set(key, value)
 
+    // Setup edges for the source node if still unset.
     this.initEdges(key)
   }
 
@@ -25,17 +27,24 @@ export class Graph<V = unknown, K extends string = string> {
   /** Set the values for multiple nodes. */
   setValues(nodes: Partial<Record<K, V>>) {
     Object.entries(nodes).forEach(([key, value]) => {
-      this.add(key as K, value as V)
+      this.set(key as K, value as V)
     })
   }
 
   /** Link one or more edges to a source node. */
   link(source: K, target: K | K[]) {
-    this.initEdges(source)
-
+    // If there is multiple target, link them one-by-one.
     if (Array.isArray(target)) return this.links(source, target)
 
-    this.edgeOf(source).push(target)
+    // Setup edges for the source node if needed.
+    this.initEdges(source)
+
+    // Ignore if the target is already linked with the source.
+    const edges = this.edgeOf(source)
+    if (edges.includes(target)) return
+
+    // Link the target node with the source's.
+    edges.push(target)
   }
 
   /** Link multiple edges to one source node. */
