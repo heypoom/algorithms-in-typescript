@@ -1,7 +1,6 @@
 import {Graph} from './graph'
 
-const trims = (s: string[]) =>
-  s.map((line) => line.trim()).filter((line) => line)
+import {trims} from '~/utils'
 
 export function parseDot<V = unknown, K extends string = string>(
   markup: string,

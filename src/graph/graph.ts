@@ -15,6 +15,10 @@ export class Graph<V = unknown, K extends string = string> {
   add(key: K, value: V) {
     this.nodes.set(key, value)
 
+    this.initEdges(key)
+  }
+
+  initEdges(key: K) {
     if (!this.edges.has(key)) this.edges.set(key, [])
   }
 
@@ -27,6 +31,8 @@ export class Graph<V = unknown, K extends string = string> {
 
   /** Link one or more edges to a source node. */
   link(source: K, target: K | K[]) {
+    this.initEdges(source)
+
     if (Array.isArray(target)) return this.links(source, target)
 
     this.edgeOf(source).push(target)
@@ -62,7 +68,7 @@ export class Graph<V = unknown, K extends string = string> {
     return parseDot(markup, this)
   }
 
-  dot(strings: TemplateStringsArray, ...args: string[]) {
+  dot(strings: TemplateStringsArray, ...args: K[]) {
     const markup = parseTaggedTemplate(strings, args)
 
     return this.parse(markup)
