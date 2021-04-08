@@ -32,13 +32,26 @@ describe('Linear Graph Breadth-First Search', () => {
   })
 })
 
-describe('Complex Graph Breadth-First Search', () => {
-  it('should be able to search cyclic graphs', () => {
+describe('Cyclic Graph Breadth-First Search', () => {
+  it('should be able to search simple cyclic graphs', () => {
     const graph = createGraph({A: 1, B: 2, C: 3})
     graph.chain('A', 'C')
     graph.chain('C', 'A', 'B')
 
     const edges = graph.collect('A', graph.bfs)
     expect(edges.join('')).toBe('ACB')
+  })
+})
+
+describe('Complex Graph Breadth-First Search', () => {
+  it('should be able to search complex graphs', () => {
+    const graph = createGraph({A: 1, B: 2, C: 3, D: 4, E: 5, F: 6})
+    graph.link('A', ['B', 'C', 'D', 'E'])
+    graph.link('C', ['D', 'B', 'A'])
+    graph.link('E', ['A', 'C', 'E'])
+    graph.link('F', ['A', 'B'])
+
+    const edges = graph.collect('A', graph.bfs)
+    expect(edges.join('')).toBe('ABCDE')
   })
 })

@@ -1,6 +1,7 @@
 import {bfs} from './bfs'
 
 import {collect, dedupe} from '~/utils'
+import {parseDot} from './parseDot'
 
 export class Graph<V = unknown, K extends string = string> {
   nodes: Map<K, V> = new Map()
@@ -55,6 +56,10 @@ export class Graph<V = unknown, K extends string = string> {
 
   bfs(source: K, onVisit: (edge: K) => void) {
     bfs(source, this, onVisit)
+  }
+
+  parse(markup: string) {
+    return parseDot(markup, this)
   }
 
   values(keys: K[]): (V | null)[] {
